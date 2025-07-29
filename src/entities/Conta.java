@@ -1,22 +1,22 @@
 package entities;
 
 public class Conta {
-    private String titular;
+    private  Pessoa titular;
     private int numeroDaConta;
     private Double saldo;
+
 
     public Conta(){
 
     }
-    public Conta (String titular,int numeroDaConta,Double saldo){
+    public Conta (Pessoa titular, int numeroDaConta,Double saldo){
         this.titular = titular;
         this.numeroDaConta = numeroDaConta;
         this.saldo = saldo;
+
     }
 
-    public String getTitular(){
-        return titular;
-    }
+
 
     public int getNumeroDaConta(){
         return numeroDaConta;
@@ -27,11 +27,23 @@ public class Conta {
     }
 
     public void Deposito(Double deposito){
-        saldo += deposito;
+        if(deposito > 0){
+            saldo += deposito;
+        }
+        else {
+            throw new RuntimeException("Valor invalido para deposito");
+        }
+
     }
 
     public void Saque(Double saque){
-        saldo -= saque;
+        if(saque<= saldo){
+            saldo -= saque;
+        }
+        else {
+            throw new RuntimeException("Saldo insuficiente");
+        }
+
     }
 
     @Override
