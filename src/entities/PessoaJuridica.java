@@ -12,4 +12,9 @@ public class PessoaJuridica extends Pessoa{
     public String getIdentificador(){
         return cnpj;
     }
+
+    @Override
+    public String toString() {
+        return nome + " - " + getIdentificador();
+    }
 }

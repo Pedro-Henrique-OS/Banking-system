@@ -3,15 +3,17 @@ package entities;
 public class Conta {
     private  Pessoa titular;
     private int numeroDaConta;
+    private int senha;
     private Double saldo;
 
 
     public Conta(){
 
     }
-    public Conta (Pessoa titular, int numeroDaConta,Double saldo){
+    public Conta (Pessoa titular, int numeroDaConta,int senha, Double saldo){
         this.titular = titular;
         this.numeroDaConta = numeroDaConta;
+        this.senha = senha;
         this.saldo = saldo;
 
     }
@@ -25,8 +27,11 @@ public class Conta {
     public Double getSaldo(){
         return saldo;
     }
+    public int getSenha(){
+        return senha;
+    }
 
-    public void Deposito(Double deposito){
+    public void deposito(Double deposito){
         if(deposito > 0){
             saldo += deposito;
         }
@@ -36,7 +41,7 @@ public class Conta {
 
     }
 
-    public void Saque(Double saque){
+    public void saque(Double saque){
         if(saque<= saldo){
             saldo -= saque;
         }
@@ -46,10 +51,12 @@ public class Conta {
 
     }
 
-    @Override
-    public String toString(){
-        return "Titular: "+ titular +
-                "Número da conta: " + numeroDaConta
-                + " Saldo: " + saldo;
+    public void exibirExtrato() {
+        System.out.println("Conta: " + numeroDaConta);
+        System.out.println("CPF: " + titular.getIdentificador());
+        System.out.println("Titular: " + titular.getNome());
+        System.out.println("Saldo: R$ " + saldo);
     }
+
+
 }
