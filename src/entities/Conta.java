@@ -31,25 +31,17 @@ public class Conta {
         return senha;
     }
 
-    public void deposito(Double deposito){
-        if(deposito > 0){
-            saldo += deposito;
-        }
-        else {
-            throw new RuntimeException("Valor invalido para deposito");
-        }
+ // metodos "seguros" para alterar o saldo
 
+    public void debitar(double valor){
+        this.saldo -= valor;
     }
 
-    public void saque(Double saque){
-        if(saque<= saldo){
-            saldo -= saque;
-        }
-        else {
-            throw new RuntimeException("Saldo insuficiente");
-        }
 
+    public void depositar(double valor){
+        this.saldo += valor;
     }
+
 
     public void exibirExtrato() {
         System.out.println("Conta: " + numeroDaConta);
